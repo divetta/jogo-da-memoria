@@ -1,20 +1,13 @@
-const createMemoryCard = front => {
-  const articleClass = front ? "'memory-card -front'" : "'memory-card'";
-  const imageSrc = front ? "'img/icon-c.png'" : "'img/icon-collabcode.png'";
-  const imageAlt = front ? "'Livro de C++'" : "'Gueio mascote da CollabCode'";
-
-  return `
-    <article class=${articleClass}>
+const createMemoryCard = (src, alt, nameClass) =>
+  `
+    <article class="memory-card ${nameClass}">
       <img  
-        src=${imageSrc}
-        alt=${imageAlt} 
+        src="${src}"
+        alt="${alt}"
         class='icon'
         onClick="handleClick()"
       />    
     </article>  
   `;
-};
 
-function handleClick() {
-  console.log("ae");
-}
+const handleClick = () => console.log("ae");
