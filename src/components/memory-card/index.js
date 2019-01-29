@@ -14,11 +14,31 @@ const memoryCard = () => {
       box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
       position: relative;
       cursor: pointer;
+      transition: transform 1s;
+      transform-style: preserve-3d;      
     }
+
+    .memory-card > :first-child {
+      display: flex;
+    }
+
+    .memory-card > :last-child {
+      display: none;
+      transform: rotateY(-180deg);
+    }    
   
     .memory-card.-front {
       background-color: #fff;
+      transform: rotateY(180deg);
     }
+
+    .memory-card.-front > :first-child {
+      display: none;
+    }
+
+    .memory-card.-front > :last-child {
+      display: flex;
+    }    
   
     .memory-card.-front::before {
       content: "";
@@ -36,22 +56,26 @@ const memoryCard = () => {
   
     .memory-card.-front > .icon {
       position: absolute;
-      transform: translateY(-12px);
+      transform: translateY(-12px) rotateY(-180deg);
     }
   `;
 
   $head.insertBefore($style, null);
 
   return ({ src, alt, nameClass }) => `
-    <article class="memory-card ${nameClass}">
+    <article class="memory-card ${nameClass}" onClick="handleClick(this)">
+      <img  
+        src="img/icon-collabcode.png"
+        alt="Gueio: icone da collabcode"
+        class="icon"
+      />
       <img  
         src="${src}"
         alt="${alt}"
-        class='icon'
-        onClick="handleClick()"
-      />    
+        class="icon"
+      />          
     </article>  
   `;
 };
 
-const handleClick = () => console.log("ae");
+const handleClick = me => me.classList.toggle("-front");

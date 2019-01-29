@@ -5,24 +5,24 @@ const $cardsWrapper = createCardsWrapper();
 const createMemoryCard = memoryCard();
 
 const $memoryCardC = createMemoryCard({
-  nameClass: "-front",
+  nameClass: "",
   src: "img/icon-c.png",
   alt: "Livro de C++"
 });
 const $memoryCardJS = createMemoryCard({
   src: "img/icon-js.png",
   alt: "Livro de JavaScript",
-  nameClass: "-front"
+  nameClass: ""
 });
 const $memoryCardJava = createMemoryCard({
   src: "img/icon-java.png",
   alt: "Livro de Java",
-  nameClass: "-front"
+  nameClass: ""
 });
 const $memoryCardWoman = createMemoryCard({
   src: "img/icon-woman.png",
   alt: "Icone de uma mulher codando",
-  nameClass: "-front"
+  nameClass: ""
 });
 
 $cardsWrapper.insertAdjacentHTML("beforeend", $memoryCardC);
