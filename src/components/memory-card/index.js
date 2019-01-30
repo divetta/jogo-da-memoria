@@ -2,7 +2,20 @@ const memoryCard = () => {
   const $head = document.querySelector("head");
   const $style = document.createElement("style");
 
-  $style.textContent = `
+  $style.textContent = ` 
+    .memory-card-group {
+      transition: transform 700ms;
+      transform-style: preserve-3d;
+      position: relative;
+      width: 155px;
+      height: 155px;
+      padding-top: 10px;
+    }
+
+    .memory-card-group.-active {
+      transform: rotateY(180deg);
+    }
+  
     .memory-card {
       width: 155px;
       height: 155px;
@@ -12,33 +25,15 @@ const memoryCard = () => {
       justify-content: center;
       align-items: center;
       box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
-      position: relative;
+      position: absolute;
       cursor: pointer;
-      transition: transform 1s;
-      transform-style: preserve-3d;      
+      backface-visibility: hidden;
     }
-
-    .memory-card > :first-child {
-      display: flex;
-    }
-
-    .memory-card > :last-child {
-      display: none;
-      transform: rotateY(-180deg);
-    }    
-  
+ 
     .memory-card.-front {
       background-color: #fff;
       transform: rotateY(180deg);
     }
-
-    .memory-card.-front > :first-child {
-      display: none;
-    }
-
-    .memory-card.-front > :last-child {
-      display: flex;
-    }    
   
     .memory-card.-front::before {
       content: "";
@@ -54,28 +49,42 @@ const memoryCard = () => {
       height: 100px;
     }
   
+    .memory-card > .icon::selection {
+      color: transparent;
+      opacity: 0;
+    }
+
     .memory-card.-front > .icon {
       position: absolute;
-      transform: translateY(-12px) rotateY(-180deg);
+      transform: translateY(-12px);
+    }
+
+    .memory-card.-front > .icon::selection {
+      color: transparent;
+      opacity: 0;
     }
   `;
 
   $head.insertBefore($style, null);
 
-  return ({ src, alt, nameClass }) => `
-    <article class="memory-card ${nameClass}" onClick="handleClick(this)">
-      <img  
-        src="img/icon-collabcode.png"
-        alt="Gueio: icone da collabcode"
-        class="icon"
-      />
-      <img  
-        src="${src}"
-        alt="${alt}"
-        class="icon"
-      />          
-    </article>  
+  return ({ src, alt }) => `
+    <div class="memory-card-group" onClick="handleClick(this)">
+      <article class="memory-card">
+        <img  
+          src="img/icon-collabcode.png"
+          alt="Gueio: icone da collabcode"
+          class="icon"
+        />
+      </article>
+      <article class="memory-card -front">
+        <img  
+          src="${src}"
+          alt="${alt}"
+          class="icon"
+        />          
+      </article>  
+    </div>
   `;
 };
 
-const handleClick = me => me.classList.toggle("-front");
+const handleClick = me => me.classList.toggle("-active");
