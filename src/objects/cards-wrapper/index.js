@@ -9,9 +9,10 @@ function createCardsWrapper() {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
+      width: 100vw;
     }
     
-    .cards-wrapper > .memory-card-group > .memory-card {
+    .cards-wrapper > .memory-card > .card {
       margin-bottom: 10px;
     }
   `;

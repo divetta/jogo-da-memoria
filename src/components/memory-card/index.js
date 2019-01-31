@@ -3,7 +3,7 @@ const memoryCard = () => {
   const $style = document.createElement("style");
 
   $style.textContent = ` 
-    .memory-card-group {
+    .memory-card {
       transition: transform 700ms;
       transform-style: preserve-3d;
       position: relative;
@@ -12,11 +12,11 @@ const memoryCard = () => {
       padding-top: 10px;
     }
 
-    .memory-card-group.-active {
+    .memory-card.-active {
       transform: rotateY(180deg);
     }
   
-    .memory-card {
+    .memory-card .card {
       width: 155px;
       height: 155px;
       background-color: #f25a70;
@@ -30,12 +30,12 @@ const memoryCard = () => {
       backface-visibility: hidden;
     }
  
-    .memory-card.-front {
+    .memory-card .card.-front {
       background-color: #fff;
       transform: rotateY(180deg);
     }
   
-    .memory-card.-front::before {
+    .memory-card .card.-front::before {
       content: "";
       width: 95px;
       height: 95px;
@@ -44,22 +44,22 @@ const memoryCard = () => {
       position: absolute;
     }
   
-    .memory-card > .icon {
+    .memory-card .card > .icon {
       width: 100px;
       height: 100px;
     }
   
-    .memory-card > .icon::selection {
+    .memory-card .card > .icon::selection {
       color: transparent;
       opacity: 0;
     }
 
-    .memory-card.-front > .icon {
+    .memory-card .card.-front > .icon {
       position: absolute;
       transform: translateY(-12px);
     }
 
-    .memory-card.-front > .icon::selection {
+    .memory-card .card.-front > .icon::selection {
       color: transparent;
       opacity: 0;
     }
@@ -68,15 +68,15 @@ const memoryCard = () => {
   $head.insertBefore($style, null);
 
   return ({ src, alt }) => `
-    <div class="memory-card-group" onClick="handleClick(this)">
-      <article class="memory-card">
+    <div class="memory-card" onClick="handleClick(this)">
+      <article class="card">
         <img  
           src="img/icon-collabcode.png"
           alt="Gueio: icone da collabcode"
           class="icon"
         />
       </article>
-      <article class="memory-card -front">
+      <article class="card -front">
         <img  
           src="${src}"
           alt="${alt}"
@@ -87,4 +87,4 @@ const memoryCard = () => {
   `;
 };
 
-const handleClick = me => me.classList.toggle("-active");
+const handleClick = $component => $component.classList.toggle("-active");
