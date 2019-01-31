@@ -90,6 +90,8 @@ const memoryCard = () => {
 let turnedCards = 0;
 
 const handleClick = $component => {
+  if (turnedCards == 2) return;
+
   if (turnedCards > 0 && $component.classList.contains("-active")) {
     turnedCards--;
     $component.classList.toggle("-active");
