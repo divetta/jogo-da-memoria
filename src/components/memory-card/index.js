@@ -10,13 +10,14 @@ const memoryCard = () => {
       width: 155px;
       height: 155px;
       padding-top: 10px;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .memory-card.-active {
       transform: rotateY(180deg);
     }
   
-    .memory-card .card {
+    .memory-card > .card {
       width: 155px;
       height: 155px;
       background-color: #f25a70;
@@ -30,12 +31,12 @@ const memoryCard = () => {
       backface-visibility: hidden;
     }
  
-    .memory-card .card.-front {
+    .memory-card > .card.-front {
       background-color: #fff;
       transform: rotateY(180deg);
     }
   
-    .memory-card .card.-front::before {
+    .memory-card > .card.-front::before {
       content: "";
       width: 95px;
       height: 95px;
@@ -44,24 +45,21 @@ const memoryCard = () => {
       position: absolute;
     }
   
-    .memory-card .card > .icon {
+    .memory-card > .card > .icon {
       width: 100px;
       height: 100px;
     }
-  
-    .memory-card .card > .icon::selection {
-      color: transparent;
-      opacity: 0;
-    }
 
-    .memory-card .card.-front > .icon {
+    .memory-card > .card > .icon::selection {
+      opacity: 0;
+      color: transparent;
+      display: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+  
+    .memory-card > .card.-front > .icon {
       position: absolute;
       transform: translateY(-12px);
-    }
-
-    .memory-card .card.-front > .icon::selection {
-      color: transparent;
-      opacity: 0;
     }
   `;
 
@@ -95,7 +93,10 @@ const handleClick = $component => {
   if (turnedCards > 0 && $component.classList.contains("-active")) {
     turnedCards--;
     $component.classList.toggle("-active");
-  } else if (turnedCards < 2) {
+    return;
+  }
+
+  if (turnedCards < 2) {
     turnedCards++;
     $component.classList.toggle("-active");
   }
@@ -104,9 +105,9 @@ const handleClick = $component => {
     setTimeout(() => {
       $turnedCardsList = document.querySelectorAll(".memory-card.-active");
 
-      $turnedCardsList.forEach($element => {
-        $element.classList.remove("-active");
-      });
+      $turnedCardsList.forEach($element =>
+        $element.classList.remove("-active")
+      );
 
       turnedCards = 0;
     }, 1250);
