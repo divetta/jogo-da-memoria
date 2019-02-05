@@ -85,31 +85,20 @@ const memoryCard = () => {
   `;
 };
 
-let turnedCards = 0;
-
 const handleClick = $component => {
-  if (turnedCards == 2) return;
+  if (qtdActiveMemoryCard < 2) $component.classList.toggle("-active");
 
-  if (turnedCards > 0 && $component.classList.contains("-active")) {
-    turnedCards--;
-    $component.classList.toggle("-active");
-    return;
-  }
-
-  if (turnedCards < 2) {
-    turnedCards++;
-    $component.classList.toggle("-active");
-  }
-
-  if (turnedCards == 2) {
+  if (qtdActiveMemoryCard == 1 && $component.classList.contains("-active")) {
     setTimeout(() => {
-      $turnedCardsList = document.querySelectorAll(".memory-card.-active");
-
-      $turnedCardsList.forEach($element =>
-        $element.classList.remove("-active")
+      const $activeMemoryCards = document.querySelectorAll(
+        ".memory-card.-active"
       );
 
-      turnedCards = 0;
+      $activeMemoryCards.forEach($memoryCard => {
+        $memoryCard.classList.remove("-active");
+      });
+
+      qtdActiveMemoryCard = 0;
     }, 1250);
   }
 };
