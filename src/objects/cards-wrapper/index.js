@@ -1,4 +1,5 @@
 let qtdActiveMemoryCard = 0;
+let score = 0;
 
 function createCardsWrapper() {
   const $cardsWrapper = document.createElement("section");

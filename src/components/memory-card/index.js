@@ -86,18 +86,21 @@ const memoryCard = () => {
 };
 
 const handleClick = $component => {
-  if ($component.classList.contains("-ok")) return;
+  if ($component.classList.contains("-active") || qtdActiveMemoryCard >= 2)
+    return;
 
-  if (qtdActiveMemoryCard < 2) $component.classList.toggle("-active");
+  $component.classList.add("-active");
 
-  if (qtdActiveMemoryCard == 1 && $component.classList.contains("-active")) {
-    let $activeMemoryCards = document.querySelectorAll(
+  if (qtdActiveMemoryCard == 1) {
+    const $activeMemoryCards = document.querySelectorAll(
       ".memory-card.-active:not(.-ok)"
     );
 
     if ($activeMemoryCards[0].isEqualNode($activeMemoryCards[1])) {
-      $activeMemoryCards[0].classList.add("-ok");
-      $activeMemoryCards[1].classList.add("-ok");
+      $activeMemoryCards.forEach($memoryCard => {
+        $memoryCard.classList.add("-ok");
+      });
+      score++;
       return;
     }
 
