@@ -1,8 +1,11 @@
-const memoryCard = () => {
-  const $head = document.querySelector("head");
-  const $style = document.createElement("style");
+const memoryCard = (function() {
+  const module = {};
 
-  $style.textContent = ` 
+  module.create = () => {
+    const $head = document.querySelector("head");
+    const $style = document.createElement("style");
+
+    $style.textContent = ` 
     .memory-card {
       transition: transform 700ms;
       transform-style: preserve-3d;
@@ -63,10 +66,10 @@ const memoryCard = () => {
     }
   `;
 
-  $head.insertBefore($style, null);
+    $head.insertBefore($style, null);
 
-  return ({ src, alt }) => `
-    <div class="memory-card" onClick="handleClick(this)">
+    return ({ src, alt }) => `
+    <div class="memory-card" onClick="memoryCard.handleClick(this)">
       <article class="card">
         <img  
           src="img/icon-collabcode.png"
@@ -83,33 +86,46 @@ const memoryCard = () => {
       </article>  
     </div>
   `;
-};
+  };
 
-const handleClick = $component => {
-  if ($component.classList.contains("-active") || qtdActiveMemoryCard >= 2)
-    return;
-
-  $component.classList.add("-active");
-
-  if (qtdActiveMemoryCard == 1) {
-    const $activeMemoryCards = document.querySelectorAll(
-      ".memory-card.-active:not(.-ok)"
-    );
-
-    if ($activeMemoryCards[0].isEqualNode($activeMemoryCards[1])) {
-      $activeMemoryCards.forEach($memoryCard => {
-        $memoryCard.classList.add("-ok");
-      });
-      score++;
+  module.handleClick = $component => {
+    if ($component.classList.contains("-active") || qtdActiveMemoryCard >= 2)
       return;
+
+    module._activeMemoryCard($component);
+    module._verifySelection();
+  };
+
+  module._activeMemoryCard = $component => {
+    $component.classList.add("-active");
+  };
+
+  module._verifySelection = () => {
+    if (qtdActiveMemoryCard == 1) {
+      const $activeMemoryCards = document.querySelectorAll(
+        ".memory-card.-active:not(.-ok)"
+      );
+
+      if ($activeMemoryCards[0].isEqualNode($activeMemoryCards[1])) {
+        $activeMemoryCards.forEach($memoryCard => {
+          $memoryCard.classList.add("-ok");
+        });
+        store.score++;
+        return;
+      }
+
+      setTimeout(() => {
+        $activeMemoryCards.forEach($memoryCard => {
+          $memoryCard.classList.remove("-active");
+        });
+
+        qtdActiveMemoryCard = 0;
+      }, 700);
     }
+  };
 
-    setTimeout(() => {
-      $activeMemoryCards.forEach($memoryCard => {
-        $memoryCard.classList.remove("-active");
-      });
-
-      qtdActiveMemoryCard = 0;
-    }, 1250);
-  }
-};
+  return {
+    create: module.create,
+    handleClick: module.handleClick
+  };
+})();
