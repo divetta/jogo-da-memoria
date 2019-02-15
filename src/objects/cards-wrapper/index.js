@@ -25,6 +25,9 @@ function createCardsWrapper() {
     qtdActiveMemoryCard = $cardsWrapper.querySelectorAll(
       ".memory-card.-active:not(.-ok)"
     ).length;
+
+    const $pointBarNumber = document.querySelector(".point-bar > .number");
+    $pointBarNumber.textContent = store.score;
   });
 
   return $cardsWrapper;
