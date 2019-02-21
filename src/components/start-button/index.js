@@ -6,22 +6,22 @@ const startButton = (function() {
     const $style = document.createElement("style");
     $style.textContent = `
       .start-button {
-        background-color: #3a4042;
-        color: #fff;
-        height: 60px;
-        width: 60px;
+        background-color: #2ed573;
+        color: #fffcee;
+        height: 100px;
+        width: 100px;
         text-align: center;
         font-family: 'Comfortaa', sans-serif;
         font-weight: bold;
+        font-size: 1.05em;
         border-radius: 50%;
-        border: 0;
+        border: 3px solid #fffcee;
         z-index: 1;
         position: absolute;
-        bottom: 0;
+        bottom: 70px;
         left: 50%;
         transform: translateX(-50%);
-        margin-bottom: 70px;
-        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+        box-shadow: 0px 4px 8px #3a4042;
         cursor: pointer;
       }
     `;
@@ -32,7 +32,7 @@ const startButton = (function() {
     module._style();
 
     return `
-      <button class="start-button" onClick="startButton.handleClick()">Start</button>
+      <button class="start-button" onClick="startButton.handleClick()">START</button>
     `;
   };
 
@@ -40,8 +40,7 @@ const startButton = (function() {
     store.score = 0;
     qtdActiveMemoryCard = 0;
 
-    const $pointBarNumber = document.querySelector(".point-bar > .number");
-    $pointBarNumber.textContent = store.score;
+    document.querySelector(".point-bar > .number").textContent = store.score;
 
     const $activeMemoryCards = document.querySelectorAll(
       ".memory-card.-active"
