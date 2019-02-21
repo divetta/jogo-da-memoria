@@ -13,6 +13,10 @@ const blockLayer = (function() {
         width: 100%;
         background-color: black;
       }
+
+      .block-layer.-deactivate {
+        display: none;
+      }
     `;
     $head.insertBefore($style, null);
   };

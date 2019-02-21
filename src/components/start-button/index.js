@@ -37,6 +37,8 @@ const startButton = (function() {
   };
 
   module.handleClick = () => {
+    document.querySelector(".block-layer").classList.toggle("-deactivate");
+
     store.score = 0;
     qtdActiveMemoryCard = 0;
 
