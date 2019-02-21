@@ -6,6 +6,7 @@
 
   const $pointBar = pointBar.create();
   const $startButton = startButton.create();
+  const $blockLayer = blockLayer.create();
   const $memoryCardC = createMemoryCard({
     src: "img/icon-c.png",
     alt: "Livro de C++"
@@ -32,6 +33,7 @@
   $cardsWrapper.insertAdjacentHTML("beforeend", $memoryCardJS);
   $cardsWrapper.insertAdjacentHTML("beforeend", $memoryCardWoman);
 
+  $root.insertAdjacentHTML("beforebegin", $blockLayer);
   $root.insertAdjacentHTML("afterbegin", $pointBar);
   $root.insertAdjacentHTML("beforeend", $startButton);
   $root.insertAdjacentElement("beforeend", $cardsWrapper);

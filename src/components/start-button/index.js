@@ -16,7 +16,7 @@ const startButton = (function() {
         font-size: 1.05em;
         border-radius: 50%;
         border: 3px solid #fffcee;
-        z-index: 1;
+        z-index: 2;
         position: absolute;
         bottom: 70px;
         left: 50%;
