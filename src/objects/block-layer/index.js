@@ -12,10 +12,13 @@ const blockLayer = (function() {
         height: 100%;
         width: 100%;
         background-color: black;
+        transition: opacity 1.5s 1.5s linear, z-index 1.5s 1.5s step-start;
       }
 
       .block-layer.-deactivate {
-        display: none;
+        opacity: 0;
+        z-index: -1;
+        transition: opacity 1.5s 1.5s linear, z-index 1.5s 1.5s step-end;
       }
     `;
     $head.insertBefore($style, null);

@@ -33,8 +33,8 @@
   $cardsWrapper.insertAdjacentHTML("beforeend", $memoryCardJS);
   $cardsWrapper.insertAdjacentHTML("beforeend", $memoryCardWoman);
 
-  $root.insertAdjacentHTML("beforebegin", $blockLayer);
   $root.insertAdjacentHTML("afterbegin", $pointBar);
+  $root.insertAdjacentHTML("afterbegin", $blockLayer);
   $root.insertAdjacentHTML("beforeend", $startButton);
   $root.insertAdjacentElement("beforeend", $cardsWrapper);
 })();
