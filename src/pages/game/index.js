@@ -5,36 +5,35 @@
   const createMemoryCard = memoryCard.create();
 
   const $pointBar = pointBar.create();
-  const $startButton = startButton.create();
-  const $blockLayer = blockLayer.create();
+  const $layerStart = layerStart.render("Vai");
+
   const $memoryCardC = createMemoryCard({
     src: "img/icon-c.png",
-    alt: "Livro de C++"
+    alt: "Ícone de um livro da linguagem C++"
   });
   const $memoryCardJS = createMemoryCard({
     src: "img/icon-js.png",
-    alt: "Livro de JavaScript"
+    alt: "Ícone de um livro da linguagem JavaScript"
   });
   const $memoryCardJava = createMemoryCard({
     src: "img/icon-java.png",
-    alt: "Livro de Java"
+    alt: "Ícone de um livro da linguagem Java"
   });
   const $memoryCardWoman = createMemoryCard({
     src: "img/icon-woman.png",
-    alt: "Icone de uma mulher codando"
+    alt: "Ícone de um mina codando"
   });
 
-  $cardsWrapper.insertAdjacentHTML("beforeend", $memoryCardC);
   $cardsWrapper.insertAdjacentHTML("beforeend", $memoryCardJS);
   $cardsWrapper.insertAdjacentHTML("beforeend", $memoryCardJava);
   $cardsWrapper.insertAdjacentHTML("beforeend", $memoryCardWoman);
   $cardsWrapper.insertAdjacentHTML("beforeend", $memoryCardC);
   $cardsWrapper.insertAdjacentHTML("beforeend", $memoryCardJava);
   $cardsWrapper.insertAdjacentHTML("beforeend", $memoryCardJS);
+  $cardsWrapper.insertAdjacentHTML("beforeend", $memoryCardC);
   $cardsWrapper.insertAdjacentHTML("beforeend", $memoryCardWoman);
 
   $root.insertAdjacentHTML("afterbegin", $pointBar);
-  $root.insertAdjacentHTML("afterbegin", $blockLayer);
-  $root.insertAdjacentHTML("beforeend", $startButton);
   $root.insertAdjacentElement("beforeend", $cardsWrapper);
+  $root.insertAdjacentHTML("beforeend", $layerStart);
 })();
