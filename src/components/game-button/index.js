@@ -21,10 +21,12 @@ const gameButton = (function() {
         font-size: 1.05em;
         cursor: pointer;
         box-shadow: 0px 4px 8px #3a4042;
-        transition: opacity 200ms linear;
+        transition: opacity 300ms 300ms linear, transform 300ms;
       }
 
       .game-button.-disable{
+        transform-origin: 80% 100%;
+        transform: scale(2.5);
         opacity: 0;
       }
     `;
