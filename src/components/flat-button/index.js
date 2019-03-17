@@ -15,15 +15,19 @@ const flatButton = (function() {
         height: 176px;
         text-transform: uppercase;
       }
+
+      .flat-button.-active {
+        background-color: #f25a70;
+      }
     `;
 
     $head.insertAdjacentElement("beforeend", $style);
   };
 
-  module.render = () => {
+  module.render = (content, style) => {
     module._style();
 
-    return `<button class="flat-button">Log in</button>`;
+    return `<button class="${style}">${content}</button>`;
   };
 
   return {
