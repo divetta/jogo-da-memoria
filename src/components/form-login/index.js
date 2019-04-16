@@ -1,4 +1,4 @@
-const formSignup = (function() {
+const formLogin = (function() {
   const module = {};
 
   module._style = () => {
@@ -6,7 +6,7 @@ const formSignup = (function() {
     const $style = document.createElement("style");
 
     $style.textContent = `
-      .form-signup {
+      .form-login {
         padding: 0 35px 40px;
       }
     `;
@@ -15,15 +15,9 @@ const formSignup = (function() {
   };
 
   module._children = () => {
-    const $usernameLabel = labelCollabcode.render("Username");
+    const $usernameLabel = labelCollabcode.render("Username ou e-mail");
     const $usernameInput = inputCollabcode.render({
-      placeholder: "seuusername"
-    });
-
-    const $emailLabel = labelCollabcode.render("E-mail");
-    const $emailInput = inputCollabcode.render({
-      placeholder: "seuemail@gmail.com",
-      type: "email"
+      placeholder: "seuemail@gmail.com"
     });
 
     const $passwordLabel = labelCollabcode.render("Password");
@@ -32,23 +26,19 @@ const formSignup = (function() {
       type: "password"
     });
 
-    const $confirmPasswordLabel = labelCollabcode.render("Confirm Password");
-    const $confirmPasswordInput = inputCollabcode.render({
-      placeholder: "suasenha@",
-      type: "password"
+    const $linkCollab = linkCollab.render({
+      href: "#",
+      content: "Forgot password?"
     });
 
-    const $btnCollabcode = btnCollabcode.render("Signup");
+    const $btnCollabcode = btnCollabcode.render("Login");
 
     return `
-      ${$emailLabel}
-      ${$emailInput}
       ${$usernameLabel}
       ${$usernameInput}
       ${$passwordLabel}
       ${$passwordInput}
-      ${$confirmPasswordLabel}
-      ${$confirmPasswordInput}
+      ${$linkCollab}
       ${$btnCollabcode}
     `;
   };
@@ -56,7 +46,7 @@ const formSignup = (function() {
   module.render = () => {
     module._style();
 
-    return `<form class="form-signup" method="POST" action="">${module._children()}</form>`;
+    return `<form class="form-login" method="POST" action="">${module._children()}</form>`;
   };
 
   return {
