@@ -4,7 +4,7 @@
   "description": "Jogo da memória",
   "main": "index.html",
   "scripts": {
-    "dev": "live-server"
+    "dev": "live-server --browser=firefox.exe"
   },
   "repository": {
     "type": "git",

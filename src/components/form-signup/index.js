@@ -38,7 +38,7 @@ const formSignup = (function() {
       type: "password"
     });
 
-    const $btnCollabcode = btnCollabcode.render("Signup");
+    const $btnCollabcode = btnCollabcode.render("Submit");
 
     return `
       ${$emailLabel}

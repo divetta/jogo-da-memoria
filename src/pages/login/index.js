@@ -1,8 +1,8 @@
 (function() {
   const $root = document.querySelector("#root");
 
-  const $loginButton = flatButton.render("Log in");
-  const $signinButton = flatButton.render("Sign up", true);
+  const $loginButton = flatButton.render("Log in", true);
+  const $signinButton = flatButton.render("Sign up");
   const $logoCollabcode = logoCollabcode.render();
   const $titleCollabcode = titleCollabcode.render("Hello!");
   const $logoWrapper = logoWrapper.render($logoCollabcode, $titleCollabcode);
