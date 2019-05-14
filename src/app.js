@@ -1,10 +1,13 @@
 (function() {
   const { hash } = window.location;
-  const paths = [];
-  paths[""] = login;
-  paths["#/login"] = login;
-  paths["#/signup"] = signup;
-  paths["#/game"] = game;
-
-  paths[hash]();
+  if (paths[hash] != undefined) paths[hash]();
+  else notfound();
 })();
+
+const redirect = path => {
+  const $root = document.querySelector("#root");
+  while ($root.firstChild) $root.removeChild($root.firstChild);
+
+  if (paths[`#/${path}`] != undefined) paths[`#/${path}`]();
+  else notfound();
+};

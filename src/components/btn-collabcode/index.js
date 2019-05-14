@@ -27,8 +27,8 @@ const btnCollabcode = (function() {
 
   module.handleClick = (event, path) => {
     event.preventDefault();
-    console.log(path);
     window.location.hash = `#/${path}`;
+    redirect(path);
   };
 
   module.render = ({ content = "", path = "" }) => {

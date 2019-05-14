@@ -20,6 +20,7 @@ const flatButton = (function() {
         padding-top: 60px;
         height: 176px;
         text-transform: uppercase;
+        cursor: pointer;
       }
     `;
 
@@ -28,6 +29,7 @@ const flatButton = (function() {
 
   module.handleClick = path => {
     window.location.hash = `#/${path}`;
+    redirect(path);
   };
 
   module.render = (content = "", active = false, path = "") => {
