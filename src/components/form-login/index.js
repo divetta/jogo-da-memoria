@@ -22,22 +22,31 @@ const formLogin = (function() {
 
     const $passwordLabel = labelCollabcode.render("Password");
     const $passwordInput = inputCollabcode.render({
+      id: "password",
       placeholder: "suasenh@",
       type: "password"
     });
+
+    const $eyeCollabcode = eyeCollabcode.render({ attrFor: "password" });
 
     const $linkCollab = linkCollab.render({
       href: "#",
       content: "Forgot password?"
     });
 
-    const $btnCollabcode = btnCollabcode.render("Login");
+    const $btnCollabcode = btnCollabcode.render({
+      content: "Login",
+      path: "game"
+    });
 
     return `
       ${$usernameLabel}
       ${$usernameInput}
       ${$passwordLabel}
       ${$passwordInput}
+
+      ${$eyeCollabcode}
+
       ${$linkCollab}
       ${$btnCollabcode}
     `;
