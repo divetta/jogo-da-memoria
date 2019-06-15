@@ -3,6 +3,7 @@ const inputCollabcode = (function() {
 
   module._style = () => {
     const $head = document.querySelector("head");
+
     const $style = document.createElement("style");
 
     $style.textContent = `

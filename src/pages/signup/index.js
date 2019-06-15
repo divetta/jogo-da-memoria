@@ -14,6 +14,7 @@ const signup = function() {
   $root.insertAdjacentHTML("beforeend", $logoWrapper);
   $root.insertAdjacentHTML("beforeend", $formSignup);
 
+  //Adicionando as validações da página
   const $form = document.querySelector("#form");
 
   $form.addEventListener("submit", event => {

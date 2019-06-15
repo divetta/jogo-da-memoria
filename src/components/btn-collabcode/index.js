@@ -20,6 +20,10 @@ const btnCollabcode = (function() {
       .input-collabcode + .btn-collabcode {
         margin-top: 45px;
       }
+
+      .span-error + .btn-collabcode {
+        margin-top: 45px;
+      }      
     `;
 
     $head.insertAdjacentElement("beforeend", $style);

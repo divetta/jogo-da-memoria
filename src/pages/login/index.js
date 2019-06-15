@@ -13,6 +13,7 @@ const login = function() {
   $root.insertAdjacentHTML("beforeend", $logoWrapper);
   $root.insertAdjacentHTML("beforeend", $formLogin);
 
+  //Adicionando as validações da página
   const $form = document.querySelector("#form");
 
   const $email = document.querySelector("#email");
@@ -26,14 +27,14 @@ const login = function() {
   $email.addEventListener("input", () => {
     if ($email.validity.valid) {
       $emailError.innerHTML = "";
-      $emailError.className = "error";
+      $emailError.classList.remove("-active");
     }
   });
 
   $password.addEventListener("input", () => {
     if ($password.validity.valid) {
       $passwordError.innerHTML = "";
-      $passwordError.className = "error";
+      $passwordError.classList.remove("-active");
     }
   });
 
@@ -48,12 +49,12 @@ const login = function() {
 
     if (!$email.validity.valid) {
       $emailError.innerHTML = "E-mail inválido!";
-      $emailError.className = "error active";
+      $emailError.classList.add("-active");
     }
 
     if (!$password.validity.valid) {
       $passwordError.innerHTML = "Sua senha deve conter 8 caracteres!";
-      $passwordError.className = "error active";
+      $passwordError.classList.add("-active");
     }
   });
 };

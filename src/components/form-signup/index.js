@@ -24,6 +24,7 @@ const formSignup = (function() {
       required: true,
       placeholder: "seuusername"
     });
+    const $usernameSpan = spanError.render("username");
 
     const $emailLabel = labelCollabcode.render({
       content: "E-mail",
@@ -35,6 +36,7 @@ const formSignup = (function() {
       placeholder: "seuemail@gmail.com",
       type: "email"
     });
+    const $emailSpan = spanError.render("email");
 
     const $passwordLabel = labelCollabcode.render({
       content: "Password",
@@ -46,6 +48,7 @@ const formSignup = (function() {
       placeholder: "suasenh@",
       type: "password"
     });
+    const $passwordSpan = spanError.render("password");
 
     const $confirmPasswordLabel = labelCollabcode.render({
       content: "Confirm Password",
@@ -57,6 +60,7 @@ const formSignup = (function() {
       placeholder: "suasenha@",
       type: "password"
     });
+    const $confirmpasswordSpan = spanError.render("confirmpassword");
 
     const $btnCollabcode = btnCollabcode.render({
       content: "Signup"
@@ -65,12 +69,16 @@ const formSignup = (function() {
     return `
       ${$emailLabel}
       ${$emailInput}
+      ${$emailSpan}
       ${$usernameLabel}
       ${$usernameInput}
+      ${$usernameSpan}
       ${$passwordLabel}
       ${$passwordInput}
+      ${$passwordSpan}
       ${$confirmPasswordLabel}
       ${$confirmPasswordInput}
+      ${$confirmpasswordSpan}
       ${$btnCollabcode}
     `;
   };

@@ -17,7 +17,7 @@ const labelCollabcode = (function() {
         margin-top: 30px;
       }      
 
-      .error + .label-collabcode {
+      .span-error + .label-collabcode {
         margin-top: 30px;
       }  
     `;

@@ -1,4 +1,4 @@
-const spanCollabcode = (function() {
+const spanError = (function() {
   const module = {};
 
   module._style = () => {
@@ -6,7 +6,7 @@ const spanCollabcode = (function() {
     const $style = document.createElement("style");
 
     $style.textContent = `
-      .error {
+      .span-error {
         width: 100%;
         padding: 0;
       
@@ -17,10 +17,12 @@ const spanCollabcode = (function() {
       
         -moz-box-sizing: border-box;
         box-sizing: border-box;
+        display: none;
       }
       
-      .error.active {
+      .span-error.-active {
         padding: 0.3em;
+        display: initial;
       }   
     `;
 
@@ -30,7 +32,7 @@ const spanCollabcode = (function() {
   module.render = spanfor => {
     module._style();
 
-    return `<span for="${spanfor}" class="error" aria-live="polite"></span>`;
+    return `<span for="${spanfor}" class="span-error" aria-live="polite"></span>`;
   };
 
   return {

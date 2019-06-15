@@ -25,7 +25,7 @@ const formLogin = (function() {
       type: "email",
       required: true
     });
-    const $usernameSpan = spanCollabcode.render("email");
+    const $usernameSpan = spanError.render("email");
 
     const $passwordLabel = labelCollabcode.render({
       content: "Password",
@@ -37,7 +37,7 @@ const formLogin = (function() {
       type: "password",
       required: true
     });
-    const $passwordSpan = spanCollabcode.render("password");
+    const $passwordSpan = spanError.render("password");
 
     const $eyeCollabcode = eyeCollabcode.render({ attrFor: "password" });
 
