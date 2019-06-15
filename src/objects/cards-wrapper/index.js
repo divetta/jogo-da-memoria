@@ -12,6 +12,7 @@ function createCardsWrapper() {
       flex-wrap: wrap;
       justify-content: space-around;
       width: 100vw;
+      margin-bottom: 10px;
     }
     
     .cards-wrapper > .memory-card > .card {

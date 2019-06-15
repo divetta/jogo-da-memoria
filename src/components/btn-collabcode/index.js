@@ -20,25 +20,20 @@ const btnCollabcode = (function() {
       .input-collabcode + .btn-collabcode {
         margin-top: 45px;
       }
+
+      .span-error + .btn-collabcode {
+        margin-top: 45px;
+      }      
     `;
 
     $head.insertAdjacentElement("beforeend", $style);
   };
 
-  module.handleClick = (event, path) => {
-    event.preventDefault();
-    window.location.hash = `#/${path}`;
-    redirect(path);
-  };
-
-  module.render = ({ content = "", path = "" }) => {
+  module.render = ({ content = "" }) => {
     module._style();
 
-    return `<input 
-              class="btn-collabcode" 
-              type="submit" 
-              value="${content}"
-              onClick="btnCollabcode.handleClick(event, '${path}')">`;
+    return `<button 
+              class="btn-collabcode">${content}</button>`;
   };
 
   return {

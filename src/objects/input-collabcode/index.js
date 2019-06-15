@@ -3,6 +3,7 @@ const inputCollabcode = (function() {
 
   module._style = () => {
     const $head = document.querySelector("head");
+
     const $style = document.createElement("style");
 
     $style.textContent = `
@@ -21,6 +22,26 @@ const inputCollabcode = (function() {
     $head.insertAdjacentElement("beforeend", $style);
   };
 
+  module._render = ({
+    id = "",
+    placeholder = "",
+    type = "text",
+    required = false
+  }) => {
+    return `<input 
+              id="${id}"
+              name="${id}"
+              class="input-collabcode" 
+              type="${type}" 
+              placeholder="${placeholder}"
+              ${required ? "required" : ""} />`;
+  };
+
+  module.create = () => {
+    module._style();
+    return module._render;
+  };
+
   module.handleClick = $component => {
     $component.classList.toggle("-active");
     $password = $component.previousSibling.previousSibling;
@@ -28,18 +49,8 @@ const inputCollabcode = (function() {
     else $password.type = "password";
   };
 
-  module.render = ({ id = "", placeholder = "", type = "text" }) => {
-    module._style();
-
-    return `<input 
-              id="${id}"
-              class="input-collabcode" 
-              type="${type}" 
-              placeholder="${placeholder}" />`;
-  };
-
   return {
-    render: module.render,
+    create: module.create,
     handleClick: module.handleClick
   };
 })();

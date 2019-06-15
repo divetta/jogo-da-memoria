@@ -16,18 +16,25 @@ const labelCollabcode = (function() {
       .input-collabcode + .label-collabcode {
         margin-top: 30px;
       }      
+
+      .span-error + .label-collabcode {
+        margin-top: 30px;
+      }  
     `;
 
     $head.insertAdjacentElement("beforeend", $style);
   };
 
-  module.render = content => {
-    module._style();
+  module._render = ({ content, labelfor }) => {
+    return `<label for="${labelfor}" class="label-collabcode">${content}</label>`;
+  };
 
-    return `<label class="label-collabcode">${content}</label>`;
+  module.create = () => {
+    module._style();
+    return module._render;
   };
 
   return {
-    render: module.render
+    create: module.create
   };
 })();

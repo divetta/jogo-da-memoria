@@ -48,7 +48,7 @@ const eyeCollabcode = (function() {
       <label 
         for="${attrFor}" 
         class="eye-collabcode"
-        onClick="eyeCollabcode.handleClick.bind(this)()">Mostrar senha</label>
+        onClick="eyeCollabcode.handleClick.bind(this)()"></label>
     `;
   };
 
