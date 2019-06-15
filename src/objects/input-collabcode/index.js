@@ -28,14 +28,21 @@ const inputCollabcode = (function() {
     else $password.type = "password";
   };
 
-  module.render = ({ id = "", placeholder = "", type = "text" }) => {
+  module.render = ({
+    id = "",
+    placeholder = "",
+    type = "text",
+    required = false
+  }) => {
     module._style();
 
     return `<input 
               id="${id}"
+              name="${id}"
               class="input-collabcode" 
               type="${type}" 
-              placeholder="${placeholder}" />`;
+              placeholder="${placeholder}"
+              ${required ? "required" : ""} />`;
   };
 
   return {

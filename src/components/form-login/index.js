@@ -15,17 +15,29 @@ const formLogin = (function() {
   };
 
   module._children = () => {
-    const $usernameLabel = labelCollabcode.render("Username ou e-mail");
-    const $usernameInput = inputCollabcode.render({
-      placeholder: "seuemail@gmail.com"
+    const $usernameLabel = labelCollabcode.render({
+      content: "Username ou e-mail",
+      labelfor: "email"
     });
+    const $usernameInput = inputCollabcode.render({
+      id: "email",
+      placeholder: "seuemail@gmail.com",
+      type: "email",
+      required: true
+    });
+    const $usernameSpan = spanCollabcode.render("email");
 
-    const $passwordLabel = labelCollabcode.render("Password");
+    const $passwordLabel = labelCollabcode.render({
+      content: "Password",
+      labelfor: "password"
+    });
     const $passwordInput = inputCollabcode.render({
       id: "password",
       placeholder: "suasenh@",
-      type: "password"
+      type: "password",
+      required: true
     });
+    const $passwordSpan = spanCollabcode.render("password");
 
     const $eyeCollabcode = eyeCollabcode.render({ attrFor: "password" });
 
@@ -35,15 +47,17 @@ const formLogin = (function() {
     });
 
     const $btnCollabcode = btnCollabcode.render({
-      content: "Login",
-      path: "game"
+      content: "Login"
     });
 
     return `
       ${$usernameLabel}
       ${$usernameInput}
+      ${$usernameSpan}
+
       ${$passwordLabel}
       ${$passwordInput}
+      ${$passwordSpan}
 
       ${$eyeCollabcode}
 
@@ -55,7 +69,7 @@ const formLogin = (function() {
   module.render = () => {
     module._style();
 
-    return `<form class="form-login" method="POST" action="">${module._children()}</form>`;
+    return `<form id="form" class="form-login" method="POST" action="" novalidate>${module._children()}</form>`;
   };
 
   return {

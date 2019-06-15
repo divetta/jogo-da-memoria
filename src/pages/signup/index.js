@@ -13,4 +13,28 @@ const signup = function() {
   $root.insertAdjacentHTML("beforeend", $signinButton);
   $root.insertAdjacentHTML("beforeend", $logoWrapper);
   $root.insertAdjacentHTML("beforeend", $formSignup);
+
+  const $form = document.querySelector("#form");
+
+  $form.addEventListener("submit", event => {
+    event.preventDefault();
+    location.hash = `#/login`;
+    location.reload(true);
+
+    // if ($email.validity.valid && $password.validity.valid) {
+    //   location.hash = `#/game`;
+    //   location.reload(true);
+    //   return true;
+    // }
+
+    // if (!$email.validity.valid) {
+    //   $emailError.innerHTML = "E-mail inválido!";
+    //   $emailError.className = "error active";
+    // }
+
+    // if (!$password.validity.valid) {
+    //   $passwordError.innerHTML = "Sua senha deve conter 8 caracteres!";
+    //   $passwordError.className = "error active";
+    // }
+  });
 };

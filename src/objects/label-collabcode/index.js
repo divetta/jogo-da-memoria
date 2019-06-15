@@ -16,15 +16,19 @@ const labelCollabcode = (function() {
       .input-collabcode + .label-collabcode {
         margin-top: 30px;
       }      
+
+      .error + .label-collabcode {
+        margin-top: 30px;
+      }  
     `;
 
     $head.insertAdjacentElement("beforeend", $style);
   };
 
-  module.render = content => {
+  module.render = ({ content, labelfor }) => {
     module._style();
 
-    return `<label class="label-collabcode">${content}</label>`;
+    return `<label for="${labelfor}" class="label-collabcode">${content}</label>`;
   };
 
   return {

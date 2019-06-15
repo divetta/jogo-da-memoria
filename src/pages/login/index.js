@@ -12,4 +12,48 @@ const login = function() {
   $root.insertAdjacentHTML("beforeend", $signinButton);
   $root.insertAdjacentHTML("beforeend", $logoWrapper);
   $root.insertAdjacentHTML("beforeend", $formLogin);
+
+  const $form = document.querySelector("#form");
+
+  const $email = document.querySelector("#email");
+  const $emailError = document.querySelector("span[for='email']");
+
+  const $password = document.querySelector("#password");
+  $password.setAttribute("minlength", "8");
+  $password.setAttribute("maxlength", "8");
+  const $passwordError = document.querySelector("span[for='password']");
+
+  $email.addEventListener("input", () => {
+    if ($email.validity.valid) {
+      $emailError.innerHTML = "";
+      $emailError.className = "error";
+    }
+  });
+
+  $password.addEventListener("input", () => {
+    if ($password.validity.valid) {
+      $passwordError.innerHTML = "";
+      $passwordError.className = "error";
+    }
+  });
+
+  $form.addEventListener("submit", event => {
+    event.preventDefault();
+
+    if ($email.validity.valid && $password.validity.valid) {
+      location.hash = `#/game`;
+      location.reload(true);
+      return true;
+    }
+
+    if (!$email.validity.valid) {
+      $emailError.innerHTML = "E-mail inválido!";
+      $emailError.className = "error active";
+    }
+
+    if (!$password.validity.valid) {
+      $passwordError.innerHTML = "Sua senha deve conter 8 caracteres!";
+      $passwordError.className = "error active";
+    }
+  });
 };
