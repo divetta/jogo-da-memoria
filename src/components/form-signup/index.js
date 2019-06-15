@@ -15,52 +15,56 @@ const formSignup = (function() {
   };
 
   module._children = () => {
-    const $usernameLabel = labelCollabcode.render({
+    const createInput = inputCollabcode.create();
+    const createLabel = labelCollabcode.create();
+    const createSpan = spanError.create();
+
+    const $usernameLabel = createLabel({
       content: "Username",
       labelfor: "username"
     });
-    const $usernameInput = inputCollabcode.render({
+    const $usernameInput = createInput({
       id: "username",
       required: true,
       placeholder: "seuusername"
     });
-    const $usernameSpan = spanError.render("username");
+    const $usernameSpan = createSpan("username");
 
-    const $emailLabel = labelCollabcode.render({
+    const $emailLabel = createLabel({
       content: "E-mail",
       labelfor: "email"
     });
-    const $emailInput = inputCollabcode.render({
+    const $emailInput = createInput({
       id: "email",
       required: true,
       placeholder: "seuemail@gmail.com",
       type: "email"
     });
-    const $emailSpan = spanError.render("email");
+    const $emailSpan = createSpan("email");
 
-    const $passwordLabel = labelCollabcode.render({
+    const $passwordLabel = createLabel({
       content: "Password",
       labelfor: "password"
     });
-    const $passwordInput = inputCollabcode.render({
+    const $passwordInput = createInput({
       id: "password",
       required: true,
       placeholder: "suasenh@",
       type: "password"
     });
-    const $passwordSpan = spanError.render("password");
+    const $passwordSpan = createSpan("password");
 
-    const $confirmPasswordLabel = labelCollabcode.render({
+    const $confirmPasswordLabel = createLabel({
       content: "Confirm Password",
       labelfor: "confirmpassword"
     });
-    const $confirmPasswordInput = inputCollabcode.render({
+    const $confirmPasswordInput = createInput({
       id: "confirmpassword",
       required: true,
       placeholder: "suasenha@",
       type: "password"
     });
-    const $confirmpasswordSpan = spanError.render("confirmpassword");
+    const $confirmpasswordSpan = createSpan("confirmpassword");
 
     const $btnCollabcode = btnCollabcode.render({
       content: "Signup"

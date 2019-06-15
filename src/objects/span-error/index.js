@@ -29,13 +29,16 @@ const spanError = (function() {
     $head.insertAdjacentElement("beforeend", $style);
   };
 
-  module.render = spanfor => {
-    module._style();
-
+  module._render = spanfor => {
     return `<span for="${spanfor}" class="span-error" aria-live="polite"></span>`;
   };
 
+  module.create = () => {
+    module._style();
+    return module._render;
+  };
+
   return {
-    render: module.render
+    create: module.create
   };
 })();

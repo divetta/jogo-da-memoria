@@ -25,13 +25,16 @@ const labelCollabcode = (function() {
     $head.insertAdjacentElement("beforeend", $style);
   };
 
-  module.render = ({ content, labelfor }) => {
-    module._style();
-
+  module._render = ({ content, labelfor }) => {
     return `<label for="${labelfor}" class="label-collabcode">${content}</label>`;
   };
 
+  module.create = () => {
+    module._style();
+    return module._render;
+  };
+
   return {
-    render: module.render
+    create: module.create
   };
 })();

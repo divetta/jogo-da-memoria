@@ -15,29 +15,33 @@ const formLogin = (function() {
   };
 
   module._children = () => {
-    const $usernameLabel = labelCollabcode.render({
+    const createInput = inputCollabcode.create();
+    const createLabel = labelCollabcode.create();
+    const createSpan = spanError.create();
+
+    const $usernameLabel = createLabel({
       content: "Username ou e-mail",
       labelfor: "email"
     });
-    const $usernameInput = inputCollabcode.render({
+    const $usernameInput = createInput({
       id: "email",
       placeholder: "seuemail@gmail.com",
       type: "email",
       required: true
     });
-    const $usernameSpan = spanError.render("email");
+    const $usernameSpan = createSpan("email");
 
-    const $passwordLabel = labelCollabcode.render({
+    const $passwordLabel = createLabel({
       content: "Password",
       labelfor: "password"
     });
-    const $passwordInput = inputCollabcode.render({
+    const $passwordInput = createInput({
       id: "password",
       placeholder: "suasenh@",
       type: "password",
       required: true
     });
-    const $passwordSpan = spanError.render("password");
+    const $passwordSpan = createSpan("password");
 
     const $eyeCollabcode = eyeCollabcode.render({ attrFor: "password" });
 
