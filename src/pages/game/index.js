@@ -5,7 +5,6 @@ const game = function() {
   const createMemoryCard = memoryCard.create();
 
   const $pointBar = pointBar.create();
-  //const $btnBack = btnBack.render();
   const $btnBack = btnCollabcode.render({ content: "Voltar", path: "login" });
   const $layerStart = layerStart.render("Vai");
 
